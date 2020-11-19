@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <PreferenceCategory
+        android:title="抢红包参数设置"
+        app:iconSpaceReserved="false">
+        <EditTextPreference
+            android:defaultValue="150"
+            android:dialogTitle="请输入等待时间"
+            android:key="edit_time_preference"
+            android:selectAllOnFocus="true"
+            android:singleLine="true"
+            android:summary="150 ms"
+            android:title="领取等待时间"
+            app:iconSpaceReserved="false" />
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="其他"
+        app:iconSpaceReserved="false">
+
+        <DropDownPreference
+            android:summary="本软件仅供学习交流使用,如作他用所承受的法律责任一概与作者无关（下载使用即代表你同意上述观点）"
+            android:title="免责声明"
+            app:iconSpaceReserved="false" />
+
+    </PreferenceCategory>
+</PreferenceScreen>

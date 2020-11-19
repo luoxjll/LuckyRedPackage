@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">易红包助手</string>
+    <string name="accessibility_description">∠( ᐛ 」∠)_使用指南∠( ᐛ 」∠)_\n\n ○ 狠戳插件开关\n ○ 回到微信聊天\n ○ 坐等红包进账\n\n</string>
+    <string name="app_version">v1.0.0</string>
+    <string name="todo">0</string>
+    <string name="community">使用帮助</string>
+    <string name="service_on">开启插件</string>
+    <string name="settings">设置</string>
+    <string name="turn_on_toast">点击「易红包助手」</string>
+    <string name="turn_on_error_toast">遇到一些问题,请手动打开系统设置>无障碍服务>微信红包(ฅ´ω`ฅ)></string>
+    <string name="service_off">关闭插件</string>
+    <!-- Preference Titles -->
+    <string name="messages_header">Messages</string>
+    <string name="sync_header">Sync</string>
+
+    <!-- Messages Preferences -->
+    <string name="signature_title">Your signature</string>
+    <string name="reply_title">Default reply action</string>
+
+    <!-- Sync Preferences -->
+    <string name="sync_title">Sync email periodically</string>
+    <string name="attachment_title">Download incoming attachments</string>
+    <string name="attachment_summary_on">Automatically download attachments for incoming emails
+    </string>
+    <string name="attachment_summary_off">Only download attachments when manually requested</string>
+    <string name="title_notice">本软件纯绿色，不获取任何敏感权限（如读取通讯录，读写存储空间）无任何后门，请放心使用!</string>
+    <string name="app_help"></string>
+</resources>
