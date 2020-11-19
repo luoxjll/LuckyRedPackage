@@ -1,7 +1,7 @@
 # LuckyRedPackage
 
 #### 介绍
-易红包助手-forWeChat
+易抢红包助手-forWeChat
 支持微信最新版本 Version 7.0.20
 
 #### 使用帮助
