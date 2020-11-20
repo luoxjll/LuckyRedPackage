@@ -5,15 +5,27 @@
     <PreferenceCategory
         android:title="抢红包参数设置"
         app:iconSpaceReserved="false">
+
         <EditTextPreference
-            android:defaultValue="150"
-            android:dialogTitle="请输入等待时间"
+            android:defaultValue="201"
+            android:dialogTitle="请输入延时时间"
+            android:key="edit_click_time_preference"
+            android:selectAllOnFocus="true"
+            android:singleLine="true"
+            android:summary="201 ms"
+            android:title="点击红包延迟时间"
+            app:iconSpaceReserved="false" />
+        <EditTextPreference
+            android:defaultValue="151"
+            android:dialogTitle="请输入延时时间"
             android:key="edit_time_preference"
             android:selectAllOnFocus="true"
             android:singleLine="true"
-            android:summary="150 ms"
-            android:title="领取等待时间"
+            android:summary="151 ms"
+            android:title="点击开延时时间"
             app:iconSpaceReserved="false" />
+
+
     </PreferenceCategory>
 
     <PreferenceCategory

@@ -12,6 +12,7 @@ import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.PreferenceManager;
 
 import com.ringkoo.luckyredpackage.R;
+import com.ringkoo.luckyredpackage.config.ConfigManger;
 import com.ringkoo.luckyredpackage.utils.Logg;
 
 /**
@@ -25,6 +26,7 @@ public class SettingFragment extends PreferenceFragmentCompat implements Prefere
     private String childTag = SettingFragment.class.getSimpleName();
     private SharedPreferences preferences;
     private EditTextPreference timeEditTextPreference;
+    private EditTextPreference timeClickEditTextPreference;
 
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
@@ -42,8 +44,23 @@ public class SettingFragment extends PreferenceFragmentCompat implements Prefere
                 });
 
                 timeEditTextPreference.setOnPreferenceChangeListener(this);
-                timeEditTextPreference.setSummary(preferences.getString("edit_time_preference", "150") + " ms");
+                timeEditTextPreference.setSummary(ConfigManger.getInstance().getOpenDelayTime() + " ms");
             }
+
+            timeClickEditTextPreference = findPreference("edit_click_time_preference");
+            if (timeClickEditTextPreference != null) {
+                timeClickEditTextPreference.setOnBindEditTextListener(new EditTextPreference.OnBindEditTextListener() {
+                    @Override
+                    public void onBindEditText(@NonNull EditText editText) {
+                        editText.setInputType(InputType.TYPE_CLASS_NUMBER);
+                    }
+                });
+
+                timeClickEditTextPreference.setOnPreferenceChangeListener(this);
+                timeClickEditTextPreference.setSummary(ConfigManger.getInstance().getClickDelayTime() + " ms");
+            }
+
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -61,6 +78,11 @@ public class SettingFragment extends PreferenceFragmentCompat implements Prefere
                 timeEditTextPreference.setSummary(newValue + " ms");
             }
             return true;
+        } else if ("edit_click_time_preference".equals(key)) {
+            if (timeEditTextPreference != null) {
+                timeClickEditTextPreference.setSummary(newValue + " ms");
+            }
+            return true;
         }
         return false;
     }
@@ -70,7 +92,11 @@ public class SettingFragment extends PreferenceFragmentCompat implements Prefere
         super.onResume();
 
         if (timeEditTextPreference != null) {
-            timeEditTextPreference.setSummary(preferences.getString("edit_time_preference", "150") + " ms");
+            timeEditTextPreference.setSummary(ConfigManger.getInstance().getOpenDelayTime() + " ms");
+        }
+
+        if (timeClickEditTextPreference != null) {
+            timeClickEditTextPreference.setSummary(ConfigManger.getInstance().getClickDelayTime() + " ms");
         }
     }
 

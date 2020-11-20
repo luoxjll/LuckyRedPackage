@@ -82,6 +82,8 @@ public class AssistBackgroundService extends AccessibilityService {
         AccessibilityNodeInfo hongBaoParent = AccessibilityHelper.findHongBaoNode2(this, event);
         if (hongBaoParent != null) {
             Logg.i(CHILD_TAG, "找到红包，点击红包");
+            int delay2 = ConfigManger.getInstance().getClickDelayTime();
+            SystemClock.sleep(delay2);
             boolean success = AccessibilityHelper.clickHongbao(hongBaoParent);
             Logg.i(CHILD_TAG, success ? "红包被点击了 " : "红包没有被点击 ");
         }

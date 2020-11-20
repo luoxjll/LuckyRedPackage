@@ -8,7 +8,9 @@ import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.accessibility.AccessibilityEvent;
 import android.view.accessibility.AccessibilityNodeInfo;
+
 import androidx.annotation.RequiresApi;
+
 import java.util.List;
 
 
@@ -65,7 +67,7 @@ public class AccessibilityHelper {
 
                         // 这个就是 开 的那个button
                         if ("android.widget.Button".equals(childName)) {
-                          //  child.performAction(AccessibilityNodeInfo.ACTION_CLICK);
+                            //  child.performAction(AccessibilityNodeInfo.ACTION_CLICK);
                         }
 
                     }
@@ -125,6 +127,9 @@ public class AccessibilityHelper {
                                             if ("已被领完".equals(contentText)) {
                                                 isUnopened = false;
                                             }
+                                            if ("已过期".equals(contentText)) {
+                                                isUnopened = false;
+                                            }
                                         }
                                     }
                                 }
@@ -173,50 +178,52 @@ public class AccessibilityHelper {
     }
 
     public static void openPackage(AccessibilityService service) {
-        //获取当前界面父布局的控件
-        AccessibilityNodeInfo accessibilityNodeInfo = service.getRootInActiveWindow();
+        try {
+            //获取当前界面父布局的控件
+            AccessibilityNodeInfo accessibilityNodeInfo = service.getRootInActiveWindow();
 
-        if (accessibilityNodeInfo != null) {
-            int childCount = accessibilityNodeInfo.getChildCount();
-            Logg.i(CHILD_TAG, "父布局下的子节点个数 " + childCount);
+            if (accessibilityNodeInfo != null) {
+                int childCount = accessibilityNodeInfo.getChildCount();
+                Logg.i(CHILD_TAG, "父布局下的子节点个数 " + childCount);
 
-            CharSequence className1 = accessibilityNodeInfo.getClassName();
-            Logg.i(CHILD_TAG, "父布局的类名  " + className1);
+                CharSequence className1 = accessibilityNodeInfo.getClassName();
+                Logg.i(CHILD_TAG, "父布局的类名  " + className1);
 
-            CharSequence text = accessibilityNodeInfo.getText();
-            Logg.i(CHILD_TAG, "父布局的text  " + text);
+                CharSequence text = accessibilityNodeInfo.getText();
+                Logg.i(CHILD_TAG, "父布局的text  " + text);
 
-            if (childCount > 0) {
-                for (int i = 0; i < childCount; i++) {
-                    AccessibilityNodeInfo child = accessibilityNodeInfo.getChild(i);
+                if (childCount > 0) {
+                    for (int i = 0; i < childCount; i++) {
+                        AccessibilityNodeInfo child = accessibilityNodeInfo.getChild(i);
 
-                    String childName = child.getClassName().toString();
-                    Logg.i(CHILD_TAG, "父布局的子节点类名  " + childName);
-                    boolean clickable = child.isClickable();
-                    Logg.i(CHILD_TAG, "父布局的子节点  " + (clickable ? "可点击" : "不可点击"));
+                        String childName = child.getClassName().toString();
+                        Logg.i(CHILD_TAG, "父布局的子节点类名  " + childName);
+                        boolean clickable = child.isClickable();
+                        Logg.i(CHILD_TAG, "父布局的子节点  " + (clickable ? "可点击" : "不可点击"));
 
-                    if ("android.widget.TextView".equals(childName)) {
-                        String textContent = child.getText().toString();
-                        Logg.i(CHILD_TAG, "text view content " + textContent);
-                    }
+                        if ("android.widget.TextView".equals(childName)) {
+                            String textContent = child.getText().toString();
+                            Logg.i(CHILD_TAG, "text view content " + textContent);
+                        }
 
-                    // 这个子节点是那个 X
-                    if ("android.widget.ImageView".equals(childName)) {
-                        // child.performAction(AccessibilityNodeInfo.ACTION_CLICK);
-                    }
+                        // 这个子节点是那个 X
+                        if ("android.widget.ImageView".equals(childName)) {
+                            // child.performAction(AccessibilityNodeInfo.ACTION_CLICK);
+                        }
 
-                    // 这个就是 开 的那个button
-                    if ("android.widget.Button".equals(childName)) {
-                        child.performAction(AccessibilityNodeInfo.ACTION_CLICK);
+                        // 这个就是 开 的那个button
+                        if ("android.widget.Button".equals(childName)) {
+                            child.performAction(AccessibilityNodeInfo.ACTION_CLICK);
+                        }
                     }
                 }
+
             }
-
+        } catch (Exception e) {
+            e.printStackTrace();
         }
+
     }
-
-
-
 
 
     //----------------------------------------手势实现---------------------------------

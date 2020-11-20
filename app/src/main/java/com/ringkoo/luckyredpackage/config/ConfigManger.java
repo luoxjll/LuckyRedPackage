@@ -28,6 +28,10 @@ public class ConfigManger {
     }
 
     public int getOpenDelayTime() {
-        return Integer.parseInt(preferences.getString("edit_time_preference", "150"));
+        return Integer.parseInt(preferences.getString("edit_time_preference", "151"));
+    }
+
+    public int getClickDelayTime() {
+        return Integer.parseInt(preferences.getString("edit_click_time_preference", "201"));
     }
 }
