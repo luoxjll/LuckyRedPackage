@@ -120,14 +120,11 @@ public class AccessibilityHelper {
                                             if ("微信红包".equals(contentText)) {
                                                 isWeChatHongBao = true;
                                             }
-                                            if ("已领取".equals(contentText)) {
-                                                isUnopened = false;
-                                            }
 
-                                            if ("已被领完".equals(contentText)) {
-                                                isUnopened = false;
-                                            }
-                                            if ("已过期".equals(contentText)) {
+                                            if ("已领取".equals(contentText)
+                                                    || "已被领完".equals(contentText)
+                                                    || "已过期".equals(contentText)) {
+
                                                 isUnopened = false;
                                             }
                                         }
