@@ -4,7 +4,7 @@
 易抢红包助手-forWeChat
 支持微信最新版本 Version 7.0.20
 
-前往[**Release**]()下载最新版本。
+前往[**Release**](https://gitee.com/xjluo/LuckyRedPackage/releases/v1.0.3)下载最新版本。
 #### 使用帮助
 
 1. 点击 开启插件 按钮，跳转到无障碍辅助页面；
